@@ -9,7 +9,7 @@ type UserPart2 = {
   phone: string;
 };
 
-type User = UserPart & UserPart2;
+interface User extends UserPart, UserPart2 {}
 
 const user: User = {
   id: "1",
