@@ -6,10 +6,14 @@ const findUsersByName = (
   users: {
     id: string;
     name: string;
-  }[],
+  }[]
 ) => {
-  if (searchParams.name) {
-    return users.filter((user) => user.name.includes(searchParams.name));
+  // Filter creates a new scope, so we need to assign name outside so
+  // that the complier knows the name in the .includes cannot be mutated.
+  // Also works with let (b/c Typescript tracks changes to it.)
+  const name = searchParams.name;
+  if (name) {
+    return users.filter((user) => user.name.includes(name));
   }
 
   return users;
@@ -29,7 +33,7 @@ it("Should find the exact name", () => {
         id: "2",
         name: "Alice",
       },
-    ],
+    ]
   );
 
   expect(result).toEqual([
