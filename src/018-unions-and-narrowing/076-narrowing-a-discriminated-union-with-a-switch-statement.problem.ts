@@ -13,11 +13,14 @@ type Square = {
 
 type Shape = Circle | Square;
 
+// Note how function is inferred to return a number, because
+// the compiler can tell the switch statement is exhaustive. Cool!
 function calculateArea(shape: Shape) {
-  if (shape.kind === "circle") {
-    return Math.PI * shape.radius * shape.radius;
-  } else {
-    return shape.sideLength * shape.sideLength;
+  switch (shape.kind) {
+    case "circle":
+      return Math.PI * shape.radius * shape.radius;
+    case "square":
+      return shape.sideLength * shape.sideLength;
   }
 }
 
