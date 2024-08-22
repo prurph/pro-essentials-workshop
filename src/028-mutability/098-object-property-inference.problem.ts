@@ -4,17 +4,19 @@ type ButtonAttributes = {
 
 const modifyButton = (attributes: ButtonAttributes) => {};
 
-const buttonAttributes = {
+// Must specify type because property is mutable.
+const buttonAttributes: ButtonAttributes = {
   type: "button",
 };
 
+// Could also call this inline as `modifyButton({type: "button"})`
 modifyButton(buttonAttributes);
 
 // Example 2
 
 const modifyButtons = (attributes: ButtonAttributes[]) => {};
 
-const buttonsToChange = [
+const buttonsToChange: ButtonAttributes[] = [
   {
     type: "button",
   },
