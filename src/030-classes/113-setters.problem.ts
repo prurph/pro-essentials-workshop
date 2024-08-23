@@ -16,6 +16,11 @@ class CanvasNode {
     };
   }
 
+  set position(pos) {
+    this.#x = pos.x;
+    this.#y = pos.y;
+  }
+
   move(x: number, y: number) {
     this.#x = x;
     this.#y = y;
@@ -46,11 +51,11 @@ it("Should not be able to access x and y from the outside", () => {
 
   expect(
     // @ts-expect-error
-    canvasNode.x,
+    canvasNode.x
   ).toEqual(undefined);
   expect(
     // @ts-expect-error
-    canvasNode.y,
+    canvasNode.y
   ).toEqual(undefined);
 });
 
