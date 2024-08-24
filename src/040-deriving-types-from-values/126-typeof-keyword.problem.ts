@@ -15,7 +15,13 @@ const configurations = {
   },
 };
 
-type Environment = "development" | "production" | "staging";
+// Or two step:
+//   type Configurations = typeof configurations
+//   type Environment = keyof Configurations
+// but `keyof typeof variable` is very common
+// keyof works on types, so need typeof to convert
+// a runtime value into a type
+type Environment = keyof typeof configurations;
 
 type test = Expect<
   Equal<Environment, "development" | "production" | "staging">
