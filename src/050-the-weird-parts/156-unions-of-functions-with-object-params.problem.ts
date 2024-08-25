@@ -9,7 +9,7 @@ const logName = (obj: { name: string }) => {
 
 const loggers = [logId, logName];
 
-const logAll = (obj) => {
+const logAll = (obj: { name: string; id: string }) => {
   loggers.forEach((func) => func(obj));
 };
 
