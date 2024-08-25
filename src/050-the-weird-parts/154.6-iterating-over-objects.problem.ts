@@ -5,7 +5,11 @@ interface User {
   name: string;
 }
 
-function printUser(user: User) {}
+// Since Object.keys returns string[], need to type as keyof User to
+// allow indexing into a User.
+function printUser(user: User) {
+  Object.keys(user).forEach((k) => console.log(user[k as keyof User]));
+}
 
 it("Should log all the keys of the user", () => {
   const consoleSpy = vitest.spyOn(console, "log");
