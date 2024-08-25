@@ -1,6 +1,10 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
-let selectedId = 123;
+// Declaring a let is inferred as "any", but it's an *evolving* any, meaning
+// it's actual type is inferred as it's assigned.
+let selectedId;
+
+selectedId = 123;
 
 type test = Expect<Equal<typeof selectedId, number>>;
 
