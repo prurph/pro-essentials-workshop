@@ -2,7 +2,8 @@ import { Equal, Expect } from "@total-typescript/helpers";
 
 // 1
 
-const obj = {} as Record<string, number>;
+// Variable annotation: typecheck and infer type as annotated
+const obj: Record<string, number> = {};
 
 obj.a = 1;
 
@@ -12,20 +13,8 @@ type test = Expect<Equal<typeof obj.a, number>>;
 
 // 2
 
-const menuConfig: Record<
-  string,
-  | {
-      label: string;
-      link: string;
-    }
-  | {
-      label: string;
-      children: {
-        label: string;
-        link: string;
-      }[];
-    }
-> = {
+// Use satisfies to typecheck without changing inferred type
+const menuConfig = {
   home: {
     label: "Home",
     link: "/home",
@@ -43,7 +32,20 @@ const menuConfig: Record<
       },
     ],
   },
-};
+} satisfies Record<
+  string,
+  | {
+      label: string;
+      link: string;
+    }
+  | {
+      label: string;
+      children: {
+        label: string;
+        link: string;
+      }[];
+    }
+>;
 
 type tests = [
   Expect<Equal<typeof menuConfig.home.label, string>>,
@@ -55,11 +57,12 @@ type tests = [
         link: string;
       }[]
     >
-  >,
+  >
 ];
 
 // 3
 
-const element = document.getElementById("app") satisfies HTMLElement;
+// as: tell Typescript we know ("better than you") what the type of this is
+const element = document.getElementById("app") as HTMLElement;
 
 type test3 = Expect<Equal<typeof element, HTMLElement>>;
