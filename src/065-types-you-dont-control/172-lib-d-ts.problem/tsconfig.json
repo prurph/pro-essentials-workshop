@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "target": "ES5",
+    "target": "ES2022",
+    // Can include this separately, or it will match target if omitted. TS team
+    // recommends specifying both explicitly.
+    "lib": ["ES2022"],
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "esModuleInterop": true,
@@ -9,6 +12,6 @@
     "strict": true,
     "skipLibCheck": true,
     "isolatedModules": true,
-    "moduleDetection": "force",
-  },
+    "moduleDetection": "force"
+  }
 }
