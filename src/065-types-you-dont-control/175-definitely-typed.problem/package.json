@@ -7,6 +7,9 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
-    "diff": "^5.1.0"
+    "diff": "^5.2.0"
+  },
+  "devDependencies": {
+    "@types/diff": "5.2.0"
   }
 }
