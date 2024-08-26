@@ -5,9 +5,12 @@
     "moduleResolution": "Bundler",
     "esModuleInterop": true,
     "declaration": true,
+    // Prefer leaving true so we don't check all the .d.ts files all the time. Most
+    // of them don't live in our project. The tradeoff is that any types we declare
+    // are not checked (see index.d.ts where we illegally used runtime code).
     "skipLibCheck": true,
     "noEmit": true,
     "strict": true,
     "moduleDetection": "force"
-  },
+  }
 }
