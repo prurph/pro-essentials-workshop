@@ -1,30 +1,24 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 
-type ErrorShape = {
-  error: {
-    message: string;
-  };
-};
-
-type UserDataShape =
+type DataOrError<T> =
+  | { data: T }
   | {
-      data: {
-        id: string;
-        name: string;
-        email: string;
+      error: {
+        message: string;
       };
-    }
-  | ErrorShape;
+    };
 
-type PostDataShape =
-  | {
-      data: {
-        id: string;
-        title: string;
-        body: string;
-      };
-    }
-  | ErrorShape;
+type UserDataShape = DataOrError<{
+  id: string;
+  name: string;
+  email: string;
+}>;
+
+type PostDataShape = DataOrError<{
+  id: string;
+  title: string;
+  body: string;
+}>;
 
 // TESTS
 
@@ -62,5 +56,5 @@ type tests = [
           };
         }
     >
-  >,
+  >
 ];
