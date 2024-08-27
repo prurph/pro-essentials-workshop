@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc --watch"
+    "dev": "run-p *:dev",
+    "dev:client": "tsc --project ./src/client/tsconfig.json --watch",
+    "dev:server": "tsc --project ./src/server/tsconfig.json --watch"
   }
 }
