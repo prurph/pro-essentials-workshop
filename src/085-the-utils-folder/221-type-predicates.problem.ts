@@ -1,7 +1,12 @@
 import { Equal, Expect } from "@total-typescript/helpers";
 import { describe, expect, it } from "vitest";
 
-const hasDataAndId = (value: unknown) => {
+// `arg is Type` return type is a "type predicate": tells TS that
+// the value is the given type when this function returns true. TS can
+// do some inference of user-defined type guards, however this one
+// is too complicated and requires user annotation. Note that this makes
+// it unsafe since TS isn't verifying your check actually works.
+const hasDataAndId = (value: unknown): value is { data: { id: string } } => {
   return (
     typeof value === "object" &&
     value !== null &&
