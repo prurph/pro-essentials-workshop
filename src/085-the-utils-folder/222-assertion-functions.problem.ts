@@ -10,7 +10,8 @@ interface AdminUser extends User {
   roles: string[];
 }
 
-function assertIsAdminUser(user: User | AdminUser) {
+// Assertion functions must be `function` declarations and not arrow functions.
+function assertIsAdminUser(user: User | AdminUser): asserts user is AdminUser {
   if (!("roles" in user)) {
     throw new Error("User is not an admin");
   }
